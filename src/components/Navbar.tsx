@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token); 
-  }, []);
+  }, [window.location.href]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
