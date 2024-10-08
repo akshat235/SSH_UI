@@ -130,7 +130,7 @@ const HomePage: FC = () => {
                 <p className="text-gray-600 text-sm">{stock.longName}</p> 
               </div>
             ))}
-          </div>
+          </div></>
         )}
       </div>
 
