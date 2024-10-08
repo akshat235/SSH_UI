@@ -180,6 +180,8 @@ const PortfolioPage: React.FC = () => {
       handleSnackbar(`Stock sold successfully: ${data.message || 'Success'}`, 'success');
 
       fetchPortfolio();
+      fetchScheduledOrders();
+      fetchTransactionHistory();
     } catch (error: any) {
       handleSnackbar(error.message || 'Failed to sell stock', 'error');
     }

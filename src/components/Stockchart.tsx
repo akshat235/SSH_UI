@@ -11,7 +11,7 @@ interface StockchartProps {
 
 const Stockchart: React.FC<StockchartProps> = ({
   symbol = 'AAPL',  //defaults to Apple
-  theme = 'light',   
+  theme = 'Light',   
   locale = 'en',     // Default locale is English
   autosize = true,   
   className = '',    

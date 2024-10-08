@@ -117,9 +117,9 @@ const HomePage: FC = () => {
 
 
       <div className="max-w-4xl mx-auto mt-12">
-        <h2 className="text-2xl font-bold text-primary mb-4">Your Favorite Stocks</h2>
-        {favoriteStocks.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"> 
+        {favoriteStocks.length > 0 && (<>
+          <h2 className="text-2xl font-bold text-primary mb-4">Your Favorite Stocks</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {favoriteStocks.map((stock) => (
               <div
                 key={stock.ticker}
@@ -146,19 +146,19 @@ const HomePage: FC = () => {
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div>
-                      <p className="text-gray-700"><strong>Price:</strong> ${marketData[key].regularMarketOpen}</p>
-                      <p className="text-gray-700"><strong>Day High:</strong> ${marketData[key].dayHigh}</p>
-                      <p className="text-gray-700"><strong>Day Low:</strong> ${marketData[key].dayLow}</p>
-                      <p className="text-gray-700"><strong>Bid:</strong> ${marketData[key].bid}</p>
-                      <p className="text-gray-700"><strong>Ask:</strong> ${marketData[key].ask}</p>
+                      <p className="text-gray-700"><strong>Price:</strong> ${marketData[key]?.regularMarketOpen}</p>
+                      <p className="text-gray-700"><strong>Day High:</strong> ${marketData[key]?.dayHigh}</p>
+                      <p className="text-gray-700"><strong>Day Low:</strong> ${marketData[key]?.dayLow}</p>
+                      <p className="text-gray-700"><strong>Bid:</strong> ${marketData[key]?.bid}</p>
+                      <p className="text-gray-700"><strong>Ask:</strong> ${marketData[key]?.ask}</p>
                     </div>
                     <div>
-                      <p className="text-gray-700"><strong>52-Week High:</strong> ${marketData[key].fiftyTwoWeekHigh}</p>
-                      <p className="text-gray-700"><strong>52-Week Low:</strong> ${marketData[key].fiftyTwoWeekLow}</p>
-                      <p className="text-gray-700"><strong>Volume:</strong> {marketData[key].volume.toLocaleString()}</p>
-                      <p className="text-gray-700"><strong>Avg Volume (10 Days):</strong> {marketData[key].averageVolume10days.toLocaleString()}</p>
-                      <p className="text-gray-700"><strong>50-Day Avg:</strong> ${marketData[key].fiftyDayAverage}</p>
-                      <p className="text-gray-700"><strong>200-Day Avg:</strong> ${marketData[key].twoHundredDayAverage}</p>
+                      <p className="text-gray-700"><strong>52-Week High:</strong> ${marketData[key]?.fiftyTwoWeekHigh}</p>
+                      <p className="text-gray-700"><strong>52-Week Low:</strong> ${marketData[key]?.fiftyTwoWeekLow}</p>
+                      <p className="text-gray-700"><strong>Volume:</strong> {marketData[key]?.volume.toLocaleString()}</p>
+                      <p className="text-gray-700"><strong>Avg Volume (10 Days):</strong> {marketData[key]?.averageVolume10days.toLocaleString()}</p>
+                      <p className="text-gray-700"><strong>50-Day Avg:</strong> ${marketData[key]?.fiftyDayAverage}</p>
+                      <p className="text-gray-700"><strong>200-Day Avg:</strong> ${marketData[key]?.twoHundredDayAverage}</p>
                     </div>
                   </div>
                 </div>

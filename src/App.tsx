@@ -46,10 +46,9 @@ const LoadingSpinner = () => (
 
 const isAuthenticated = (): boolean => {
   const token = localStorage.getItem('token'); 
-  return !!token; // Return true if token exists
+  return !!token; 
 };
 
-// Wrapper for protected routes
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   if (!isAuthenticated()) {
     return <Navigate to="/login" />;
@@ -62,7 +61,6 @@ const App: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Redirect to login if the user is not authenticated and tries to access the homepage
     if (!isAuthenticated() && location.pathname === '/') {
       <Navigate to="/login" />;
     }
