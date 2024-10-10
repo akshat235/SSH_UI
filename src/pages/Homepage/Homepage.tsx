@@ -11,6 +11,7 @@ const HomePage: FC = () => {
   const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string>('');
   const [favoriteStocks, setFavoriteStocks] = useState<any[]>([]);
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
 
   const navigate = useNavigate();
 
@@ -67,6 +68,9 @@ const HomePage: FC = () => {
       if (!data || !data.symbol) {
         throw new Error('Invalid ticker');
       }
+      //
+      setSearchHistory([searchQuery, ...searchHistory]);
+
       setSearchResults([data]);
     } catch (error: any) {
       setSnackbarMessage('Invalid ticker. Please try again.');
@@ -100,6 +104,19 @@ const HomePage: FC = () => {
         <button onClick={handleSearch} className='text-white bg-primary hover:outline-none h-10 flex items-center' >Search</button>
       </div>
 
+      {searchHistory.length > 0 ?(
+        <ul className="bg-white text-blue-600 shadow-md rounded-md mt-2 max-h-40 overflow-y-auto w-2/3 mx-auto text-center">
+          {searchHistory.slice(0,3).map((history, index) => (
+            <li
+              key={index}
+              className="p-2 hover:bg-gray-200 cursor-pointer"
+              onClick={() => handleResultClick(history)}
+            >
+              {history}
+            </li>
+          ))}
+        </ul>
+      ):(<></>)}
 
       {searchResults.length > 0 && (
         <ul className="bg-white text-blue-600 shadow-md rounded-md mt-2 max-h-40 overflow-y-auto w-2/3 mx-auto text-center">
@@ -113,7 +130,7 @@ const HomePage: FC = () => {
             </li>
           ))}
         </ul>
-      )}
+      )} 
 
 
       <div className="max-w-4xl mx-auto mt-12">
@@ -155,8 +172,8 @@ const HomePage: FC = () => {
                     <div>
                       <p className="text-gray-700"><strong>52-Week High:</strong> ${marketData[key]?.fiftyTwoWeekHigh}</p>
                       <p className="text-gray-700"><strong>52-Week Low:</strong> ${marketData[key]?.fiftyTwoWeekLow}</p>
-                      <p className="text-gray-700"><strong>Volume:</strong> {marketData[key]?.volume.toLocaleString()}</p>
-                      <p className="text-gray-700"><strong>Avg Volume (10 Days):</strong> {marketData[key]?.averageVolume10days.toLocaleString()}</p>
+                      <p className="text-gray-700"><strong>Volume:</strong> {marketData[key]?.volume?.toLocaleString()}</p>
+                      <p className="text-gray-700"><strong>Avg Volume (10 Days):</strong> {marketData[key]?.averageVolume10days?.toLocaleString()}</p>
                       <p className="text-gray-700"><strong>50-Day Avg:</strong> ${marketData[key]?.fiftyDayAverage}</p>
                       <p className="text-gray-700"><strong>200-Day Avg:</strong> ${marketData[key]?.twoHundredDayAverage}</p>
                     </div>

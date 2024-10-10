@@ -12,6 +12,7 @@ export interface User {
     ticker: string;
     quantity: number;
     action: ActionType;
+    website: string;
   }
   
   export interface WatchlistItem {
