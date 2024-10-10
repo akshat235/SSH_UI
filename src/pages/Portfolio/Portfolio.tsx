@@ -367,7 +367,6 @@ const PortfolioPage: React.FC = () => {
 
           </AccordionSummary>
           <AccordionDetails>
-            <div><button>Analyze Portfolio</button></div>
             <SampleModal openModal={openModal} onOpen={() =>{handleCallApi()}} />
             {/* {JSON.stringify(portfolio)} */}
             {groupedPortfolio ? (
